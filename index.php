@@ -1,1 +1,1 @@
-<?php include_once("experimenting with AR.js/change objects/index.html"); ?>
+<?php include_once("experimenting with AR.js/display an image/index.html"); ?>

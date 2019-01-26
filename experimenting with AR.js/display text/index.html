@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>AR.js!</title>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/dev/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body style='margin : 0px; overflow: hidden;'>
+	  <a-scene embedded arjs='sourceType: webcam;'>
+      <a-marker preset='kanji' >
+        <a-entity text="align: center; value: HELLO WORLD; color:black; width:6"></a-entity>
+      </a-marker>
+      <a-camera-static/>
+	  </a-scene>
+    <script></script>
+  </body>
+</html>
