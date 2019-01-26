@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>AR.js!</title>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/dev/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body style='margin : 0px; overflow: hidden;'>
+	  <a-scene embedded arjs='sourceType: webcam;'>
+      <a-marker preset='kanji' >
+          <a-entity obj-model="obj: url(model.obj);" scale="0.1 0.1 0.1">
+              <a-animation attribute="position"
+                           dur="5000"
+                           from="0 0 0"
+                           to="0 0 15"
+                           repeat="indefinite">
+              </a-animation>
+          </a-entity>
+      </a-marker>
+      <a-camera-static/>
+	  </a-scene>
+    <script></script>
+  </body>
+</html>
