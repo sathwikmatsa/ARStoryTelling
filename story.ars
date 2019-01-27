@@ -1,0 +1,19 @@
+<scene>
+    <setup>
+        background: "image.png";
+        objects: {"model.obj":man, "tree.obj":tree};
+    </setup>
+    <onload>
+        man -> position: rightend, size: default;
+        tree -> position: leftend, size: large;
+    </onload>
+    <play>
+        subtitle: "And there is a man";
+        man(dialog, "hey tree");
+        tree(dialog, "meh");
+        man(move, tree.position, medium);
+        tree(dialog, "LOSER!!");
+        man(dialog, "I hate you");
+        man(move, rightend, fast);
+    </play>
+</scene>
