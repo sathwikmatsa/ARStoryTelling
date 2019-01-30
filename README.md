@@ -20,7 +20,13 @@ The story can be expressed as per the format specification in [ars_language_spec
 
 ## Files
 + ```composer.json``` & ```index.php``` - heroku build (cloud deployment)
-+ ```experimenting with AR.js``` - AR.js examples
++ ```experimenting with AR.js``` - testing out AR.js
 + ```story.ars``` - sample ars file
 + ```ars.js``` - parser for ars language
 + ```main.html``` - visualizer
+
+## Status
+format specification for expressing the story and a minimalistic parser is implemented.
+
+## What's next?
+wire the parser actions to AR.js for visualizing.
