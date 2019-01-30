@@ -17,6 +17,61 @@ inside of <scene> tag:
 all entities except tags must end with a semicolon
 no nesting of tags
 
+Grammar:
+
+terminal tokens:
+ost : "<scene>"
+cst : "</scene>"
+oot : "<onload>"
+cot : "</onload>"
+opt : "<play>"
+cpt : "</play>"
+bg : "background"
+string : '"*"'
+objs : "objects"
+attribute : "position", "size"
+value : "rightend", "leftend", "middle", "slow", "fast", "medium"
+action : "move", "dialog"
+sub : "subtitle"
+
+PROGRAM -> SCENES
+
+SCENES -> SCENES SCENE
+SCENES -> SCENE
+
+SCENE -> ost DECLS oot SETATTRS cot opt ACTIONS cpt cst
+
+DECLS -> DECLS DECL
+DECLS -> DECL
+
+DECL -> bg ':' string ';'
+      | objs ':' '{' URL_IDS '}' ';'
+
+URL_IDS -> URL_IDS ',' URL_ID
+URL_IDS -> URL_ID
+
+URL_ID -> string ':' id
+
+SETATTRS -> SETATTRS id '-''>' ATTRS ';'
+SETATTRS -> id '-''>' ATTRS ';'
+
+ATTRS -> attribute ':' value
+ATTRS -> ATTRS ',' attribute ':' value
+
+ACTIONS -> ACTIONS ACTION
+ACTIONS -> ACTION
+
+ACTION -> sub ':' string ';'
+        | id '(' action ',' PARAMS ')' ';'
+
+PARAMS -> PARAMS ',' PARAM
+PARAMS -> PARAM
+
+PARAM -> value
+       | string
+       | id '.' attribute
+
+
 example:
 <scene>
     background: "image.png";
