@@ -1,3 +1,4 @@
+The story is described as series of short scenes.
 A scene is described within <scene>..</scene> tags
 
 inside of <scene> tag:
