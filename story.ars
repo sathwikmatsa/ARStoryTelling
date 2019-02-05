@@ -1,8 +1,6 @@
 <scene>
-    <setup>
         background: "image.png";
         objects: {"model.obj":man, "tree.obj":tree};
-    </setup>
     <onload>
         man -> position: rightend, size: default;
         tree -> position: leftend, size: large;
