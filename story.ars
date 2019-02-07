@@ -1,17 +1,12 @@
 <scene>
-        background: "image.png";
-        objects: {"model.obj":man, "tree.obj":tree};
+        background: "assets/white_bg.png";
+        objects: {"assets/stickman.gltf":man};
     <onload>
-        man -> position: rightend, size: default;
-        tree -> position: leftend, size: large;
+        man -> position: middle, size: default;
     </onload>
     <play>
         subtitle: "And there is a man";
-        man(dialog, "hey tree");
-        tree(dialog, "meh");
-        man(move, tree.position, medium);
-        tree(dialog, "LOSER!!");
-        man(dialog, "I hate you");
-        man(move, rightend, fast);
+        man(dialog, "Hey there!");
+        man(dialog, "OK bye!");
     </play>
 </scene>
