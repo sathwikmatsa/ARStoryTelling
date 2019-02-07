@@ -22,11 +22,14 @@ The story can be expressed as per the format specification in [ars_language_spec
 + ```composer.json``` & ```index.php``` - heroku build (cloud deployment)
 + ```experimenting with AR.js``` - testing out AR.js
 + ```story.ars``` - sample ars file
-+ ```ars.js``` - parser for ars language
++ ```ars_language_specification.txt``` - informal language specification
++ ```parser_grammar.pegjs``` - grammar written in PEG
++ ```parser.js``` - generated parser as per parser_grammar.pegjs using [PEG.js](https://pegjs.org/)
++ ```ars.js``` - interpreter
 + ```main.html``` - visualizer
 
 ## Status
-format specification for expressing the story and a minimalistic parser is implemented.
+rendered a minimalistic scene.
 
 ## What's next?
-wire the parser actions to AR.js for visualizing.
+implement parser.js to completion of promised features in langauge specification
