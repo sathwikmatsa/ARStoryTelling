@@ -2,8 +2,7 @@ The story is described as series of short scenes.
 A scene is described within <scene>..</scene> tags
 
 inside of <scene> tag:
-    <setup>: to setup background and actors in a scene
-        background: "url to the background image"
+        base: "url to the base environment setting"
         objects: comma seperated object declarations in a scene - url:id enclosed in {}
     <onload>: to specify start positions of objects
         syntax - object_id -> postion, size
@@ -26,7 +25,7 @@ oot : "<onload>"
 cot : "</onload>"
 opt : "<play>"
 cpt : "</play>"
-bg : "background"
+bg : "base"
 string : '"*"'
 objs : "objects"
 attribute : "position", "size"
@@ -74,7 +73,7 @@ PARAM -> value
 
 example:
 <scene>
-    background: "image.png";
+    base -> "base.gltf";
     objects: {"model.obj":man, "tree.obj":tree};
     <onload>
         man -> position: rightend, size: default;

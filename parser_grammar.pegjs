@@ -9,7 +9,7 @@ SCENE = _ "<scene>" _ a:DECL* _ "<onload>" _ b:SETATTRS* _ "</onload>" _ "<play>
 }
 
 DECL
-= _ "background" _ ":" _ l:literal _ ";" _  {return {background: l};}
+= _ "base" _ "->" _ l:literal _ ";" _  {return {base: {url: l}};}
 / _ "objects" _ ":" _ "{" _ a:(b:literal _ ":" _ c:id _ ","? _ {let x = {}; x[c]=b; return x;})+ _ "}" _ ";" _ {return {objects: a}}
 
 SETATTRS = _ a:id _ "->" _ d:(b:attr _ ":" _ c:val _ ","? _ {let x = {}; x[b]=c; return x;})+ _ ";" _ {return {actor: a, attributes:d.reduce((x,c)=>Object.assign(x, c)) };}
