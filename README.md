@@ -38,7 +38,7 @@ point the camera feed to [kanji marker](https://user-images.githubusercontent.co
 + ```main.html``` - visualizer
 
 ## Roadmap
-- ~~render landspace/base environment~~
+- ~~render landscape/base environment~~
 - ~~render subtitles and dialogs~~
 - ~~scale objects to fit within a specified bounding box~~
 - redesign user input method by replacing text program input with graphical user interface where user can:
