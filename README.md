@@ -18,6 +18,15 @@ It works on all platforms. It runs on any browser with WebGL and WebRTC.
 
 The story can be expressed as per the format specification in [ars_language_specification.txt](https://github.com/sathwikmatsa/ARStorytelling/blob/master/ars_language_specification.txt)
 
+## Usage
+```
+git clone https://github.com/sathwikmatsa/ARStorytelling.git
+cd ARStorytelling
+```
+run [main.html](https://github.com/sathwikmatsa/ARStorytelling/blob/master/main.html) on localhost.
+
+point the camera feed to [kanji marker](https://user-images.githubusercontent.com/30603669/51952745-b34a6100-245f-11e9-8da1-f7962c1972a5.png) to visualize the story.
+
 ## Files
 + ```composer.json``` & ```index.php``` - heroku build (cloud deployment)
 + ```experimenting with AR.js``` - testing out AR.js
@@ -28,8 +37,13 @@ The story can be expressed as per the format specification in [ars_language_spec
 + ```ars.js``` - interpreter
 + ```main.html``` - visualizer
 
-## Status
-rendered a minimalistic scene.
-
-## What's next?
-implement parser.js to completion of promised features in langauge specification
+## Roadmap
+- ~~render landspace/base environment~~
+- ~~render subtitles and dialogs~~
+- ~~scale objects to fit within a specified bounding box~~
+- redesign user input method by replacing text program input with graphical user interface where user can:
+  + drag and drop objects into the playground
+  + visualize at different camera positions
+  + adjust position and scale of objects
+  + set subtitles and dialogs
+  + specify motions
