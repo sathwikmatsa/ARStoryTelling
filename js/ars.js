@@ -4,20 +4,20 @@ function loadFile(filePath) {
   let xmlhttp = new XMLHttpRequest();
   xmlhttp.open("GET", filePath, false);
   xmlhttp.send();
-  if (xmlhttp.status === 200) {
+  if (xmlhttp.status === 200){
     result = xmlhttp.responseText;
   }
   return result;
 }
 
-function sleep(ms) {
+function sleep(ms){
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 let story = parser.parse(loadFile('story.ars'));
 let nScenes = story.length;
 
-function createElementFromHTML(htmlString) {
+function createElementFromHTML(htmlString){
   let div = document.createElement('div');
   div.innerHTML = htmlString.trim();
   return div.firstChild;

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title>ARS GUI</title>
+        <link rel="stylesheet" href="css/ui.css">
+        <script src="js/three.js"></script>
+        <script src="js/GLTFLoader.js"></script>
+        <script src="js/OrbitControls.js"></script>
+	</head>
+	<body>
+        <div class="toolbar"></div>
+        <div class="outline-pane">
+            <div class="scenes">
+                <button type="button" class="new-scene" id="new_scene">CREATE A NEW SCENE</button>
+                <input id="file-input" type="file" name="load3d" accept=".gltf" style="display: none;" />
+            </div>
+        </div>
+        <div class="canvas" id="container"></div>
+        <script src="js/backend.js"></script>
+    </body>
+</html>
