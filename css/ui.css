@@ -25,6 +25,11 @@ body {
 .toolbar {
     background-color: #f72e18;
     grid-area: header;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-evenly;
+    justify-content: space-evenly;
+    align-items: stretch;
 }
 
 .outline-pane {
@@ -73,4 +78,24 @@ body {
 
 .new-scene:active {
     transform: scale(0.99);
+}
+
+a {
+    background-color: #03001c;
+    box-shadow: 0 5px 0 darkred;
+    color: white;
+    padding: 1em 1.5em;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+a:hover {
+    background-color: black;
+    cursor: pointer;
+}
+
+a:active {
+    box-shadow: none;
+    top: 5px;
 }
