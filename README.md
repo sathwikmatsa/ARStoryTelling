@@ -27,23 +27,35 @@ run [main.html](https://github.com/sathwikmatsa/ARStorytelling/blob/master/main.
 
 point the camera feed to [kanji marker](https://user-images.githubusercontent.com/30603669/51952745-b34a6100-245f-11e9-8da1-f7962c1972a5.png) to visualize the story.
 
-## Files
+run [ui.html](https://github.com/sathwikmatsa/ARStorytelling/blob/master/main.html) on a http server to build the application. **in progress**
+
+![load object](https://user-images.githubusercontent.com/30603669/54220530-a10c1a00-4517-11e9-9380-4780a89aaf39.png)
+
+![position and scale](https://user-images.githubusercontent.com/30603669/54220577-baad6180-4517-11e9-9ab4-c71834ce55de.png)
+
+## Files / Directories
++ ```main.html``` - visualizer
++ ```assets``` - models directory
++ ```js/*``` - three.js libraries
++ ```ui.html``` - gui for building ars app
++ ```js/backend.js``` - js for ui.html
++ ```css/``` - stylesheets
 + ```composer.json``` & ```index.php``` - heroku build (cloud deployment)
 + ```experimenting with AR.js``` - testing out AR.js
+
+*obsolete for GUI*
+
 + ```story.ars``` - sample ars file
 + ```ars_language_specification.txt``` - informal language specification
 + ```parser_grammar.pegjs``` - grammar written in PEG
 + ```parser.js``` - generated parser as per parser_grammar.pegjs using [PEG.js](https://pegjs.org/)
 + ```ars.js``` - interpreter
-+ ```main.html``` - visualizer
 
 ## Roadmap
-- ~~render landscape/base environment~~
-- ~~render subtitles and dialogs~~
-- ~~scale objects to fit within a specified bounding box~~
 - redesign user input method by replacing text program input with graphical user interface where user can:
-  + drag and drop objects into the playground
-  + visualize at different camera positions
-  + adjust position and scale of objects
+  + ~~load objects into the playground~~
+  + ~~visualize at different camera positions~~
+  + ~~adjust position and scale of objects~~
   + set subtitles and dialogs
   + specify motions
+- rewrite the interpreter to evaluate input from GUI
