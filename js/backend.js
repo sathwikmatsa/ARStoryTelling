@@ -13,6 +13,7 @@ function init() {
 
     // setup renderer
     renderer = new THREE.WebGLRenderer();
+    renderer.setClearColor( 0xb2b2b2 );
     renderer.setSize(container.offsetWidth, container.offsetHeight);
     container.appendChild(renderer.domElement);
 
