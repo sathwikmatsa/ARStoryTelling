@@ -5,6 +5,9 @@ let control; // pointed from html
 let raycaster = new THREE.Raycaster();
 let mouse = new THREE.Vector2();
 let objects = [];
+let object_ids = [];
+
+let output = { models: [], scenes: [] };
 
 init();
 render();
@@ -19,12 +22,12 @@ function init() {
 
     // setup camera
     camera = new THREE.PerspectiveCamera( 50, container.offsetWidth / container.offsetHeight, 1, 3000 );
-    camera.position.set( 500, 250, 500 );
-    camera.lookAt( 0, 200, 0 );
+    camera.position.set( 25, 30, 25 );
+    camera.lookAt( 0, 20, 0 );
 
     // setup scene
     scene = new THREE.Scene();
-    scene.add( new THREE.GridHelper( 500, 20 ) );
+    scene.add( new THREE.GridHelper( 50, 20 ) );
 
     // add light
     let light = new THREE.DirectionalLight( 0xffffff, 2 );
@@ -40,7 +43,7 @@ function init() {
     window.addEventListener( 'resize', onWindowResize, false );
 
     // setup control updater
-    window.addEventListener( 'mousedown', update_controller, false );
+    window.addEventListener( 'click', update_controller, false );
 }
 
 function onWindowResize() {
@@ -84,7 +87,12 @@ function update_controller( event ) {
             obj = obj.parent;
         }
 
+        // deactivate other controllers
+        deactivate_controls();
+
         control = transformers[obj.id];
+        // activate current controller
+        control.showX = control.showY = control.showZ = true;
         console.log('controller updated! '+ obj.id);
 
     }
@@ -99,7 +107,16 @@ function render() {
 
 //////////////////////////////////////////////////////////
 
-let new_scene_btn = document.getElementById( 'new_scene' );
+function deactivate_controls() {
+    for(const o of object_ids) {
+        c = transformers[o];
+        c.showX = c.showY = c.showZ = false;
+    }
+}
+
+//////////////////////////////////////////////////////////
+
+let new_scene_btn = document.getElementById( 'add' );
 let file_input = document.getElementById( 'file-input' );
 
 new_scene_btn.addEventListener( 'click', function(){
@@ -124,6 +141,10 @@ document.getElementById('file-input').addEventListener( 'change', function(evt) 
 
             console.log(gltf.scene.id);
 
+            // deactivate other controllers
+
+            deactivate_controls();
+
             // instantiate new controller and bind it to the object
             let new_control = new THREE.TransformControls( camera, renderer.domElement );
             new_control.addEventListener( 'change', render );
@@ -139,7 +160,13 @@ document.getElementById('file-input').addEventListener( 'change', function(evt) 
             scene.add( new_control );
 
             // save reference
+            object_ids.push( gltf.scene.id );
             transformers[gltf.scene.id] = new_control;
+            control = new_control;
+
+            // build output
+            output['models'].push( {'filename': filename, 'id': gltf.scene.id} );
+            console.log('pushed', output);
 
         },
         // called while loading is progressing

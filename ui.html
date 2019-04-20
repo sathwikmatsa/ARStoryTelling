@@ -10,23 +10,22 @@
         <script src="js/TransformControls.js"></script>
 	</head>
 	<body>
-        <div class="toolbar">
-            <a href="javascript:control.setMode( 'translate' );">translate</a> 
-			<a href="javascript:control.setMode( 'rotate' );">rotate</a> 
-			<a href="javascript:control.setMode( 'scale' );">scale</a> 
-			<a href="javascript:control.setSize( control.size + 0.1 );">increase size</a>
-			<a href="javascript:control.setSize( Math.max( control.size - 0.1, 0.1 ) );">decrease size</a>
-			<a href="javascript:control.showX = !control.showX">toggle X</a>
-			<a href="javascript:control.showY = !control.showY">toggle Y</a>
-			<a href="javascript:control.showZ = !control.showZ">toggle Z</a>
+        <div class="topbar">
+            <p class="info" id="info"></p>
+            <div class="toolbar" id="toolbar">
+                
+            </div>
+            <a class="complete" id='complete'></a>
+            <a class="export" id='export'>EXPORT</a>
         </div>
         <div class="outline-pane">
             <div class="scenes">
-                <button type="button" class="new-scene" id="new_scene">ADD NEW 3D MODEL</button>
+                <button type="button" class="cool" id="add"></button>
                 <input id="file-input" type="file" name="load3d" accept=".gltf" style="display: none;" />
             </div>
         </div>
         <div class="canvas" id="container"></div>
+        <script src="js/frontend.js"></script>
         <script src="js/backend.js"></script>
     </body>
 </html>

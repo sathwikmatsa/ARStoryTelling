@@ -22,9 +22,19 @@ body {
     width: 100%;
 }
 
-.toolbar {
+.topbar {
     background-color: #f72e18;
     grid-area: header;
+    position: relative;   
+}
+
+.complete {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    background-color: #36a315; 
+}
+.toolbar {
     display: flex;
     flex-flow: row wrap;
     align-content: space-evenly;
@@ -48,7 +58,7 @@ body {
     margin: 10px;
 }
 
-.new-scene {
+.cool {
     display: inline-block;
     border: none;
     padding: 1rem 1rem;
@@ -66,17 +76,17 @@ body {
     -moz-appearance: none;
 }
 
-.new-scene:hover,
-.new-scene:focus {
+.cool:hover,
+.cool:focus {
     background: #0053ba;
 }
 
-.new-scene:focus {
+.cool:focus {
     outline: 1px solid #fff;
     outline-offset: -4px;
 }
 
-.new-scene:active {
+.cool:active {
     transform: scale(0.99);
 }
 
@@ -99,3 +109,24 @@ a:active {
     box-shadow: none;
     top: 5px;
 }
+
+.complete:active {
+    top: auto;
+}
+
+.info {
+    margin: 10px 0;
+}
+
+.export {
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+    background-color: #738290; 
+    display: none;
+}
+
+.export:active {
+    top: auto;
+}
+
