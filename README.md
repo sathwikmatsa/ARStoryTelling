@@ -54,7 +54,7 @@ point the camera feed to [kanji marker](https://user-images.githubusercontent.co
 + ```ars.js``` - interpreter
 
 ## Roadmap
-- redesign user input method by replacing text program input with graphical user interface where user can:
+- ~~redesign user input method by replacing text program input with graphical user interface where user can~~:
   + ~~load objects into the playground~~
   + ~~visualize at different camera positions~~
   + ~~adjust position and scale of objects~~
@@ -63,3 +63,4 @@ point the camera feed to [kanji marker](https://user-images.githubusercontent.co
 - ~~rewrite the interpreter to evaluate input from GUI~~
 - ~~MVP~~
 - test, debug and refactor
+- deploy to heroku
