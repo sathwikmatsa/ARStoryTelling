@@ -20,6 +20,7 @@ body {
     padding:0;
     height:100%;
     width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .topbar {
@@ -52,9 +53,6 @@ body {
 }
 
 .scenes {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin: 10px;
 }
 

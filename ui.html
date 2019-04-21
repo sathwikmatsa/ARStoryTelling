@@ -4,6 +4,7 @@
 		<meta charset=utf-8>
 		<title>ARS GUI</title>
         <link rel="stylesheet" href="css/ui.css">
+        <link rel="stylesheet" href="css/popup.css">
         <script src="js/three.js"></script>
         <script src="js/GLTFLoader.js"></script>
         <script src="js/OrbitControls.js"></script>
@@ -19,13 +20,35 @@
             <a class="export" id='export'>EXPORT</a>
         </div>
         <div class="outline-pane">
-            <div class="scenes">
+            <div class="scenes" id='scenes'>
                 <button type="button" class="cool" id="add"></button>
                 <input id="file-input" type="file" name="load3d" accept=".gltf" style="display: none;" />
             </div>
         </div>
         <div class="canvas" id="container"></div>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <div class="modal-header">
+              <span class="close">&times;</span>
+              <h2>ACTION</h2>
+            </div>
+            <div class="modal-body">
+
+                <label for="name">enter text:</label>
+
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="modal-footer">
+                <button onclick="add_subtitle(document.getElementById('name').value);">submit</button>
+            </div>
+          </div>
+        </div>
+        <script src="js/constants.js"></script>
         <script src="js/frontend.js"></script>
         <script src="js/backend.js"></script>
+        <script src="js/popups.js"></script>
     </body>
 </html>

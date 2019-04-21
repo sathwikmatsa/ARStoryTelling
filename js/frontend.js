@@ -1,14 +1,9 @@
-let BASE_SCENE = 0
-let ACTIONS = 1
-
-let MODE = BASE_SCENE
-
 let info = document.getElementById('info');
 let toolbar = document.getElementById('toolbar');
 let complete = document.getElementById('complete');
 let exp = document.getElementById('export');
 let add = document.getElementById('add');
-let curr_scene = "";
+let scenes = document.getElementById('scenes');
 
 function render_topbar(){
     if (MODE == BASE_SCENE) {
@@ -37,9 +32,9 @@ function render_topbar(){
 
         // toolbar
         let act_html_string = `
-            <a href="javascript:control.setMode( 'translate' );">SUBTITLE</a>
-            <a href="javascript:control.setMode( 'rotate' );">MONOLOGUE</a>
-            <a href="javascript:control.setMode( 'scale' );">MOVE</a>
+            <a id="myBtn1">SUBTITLE</a>
+            <a id="myBtn2">MONOLOGUE</a>
+            <a id='move' onclick='fmove();'>MOVE</a>
             `;
         toolbar.innerHTML = act_html_string;
 
@@ -52,13 +47,34 @@ function render_topbar(){
 
         // export button
         exp.style.display = 'inline';
+        setButton();
     }
-
 }
 
 function add_to_sidebar(type, id){
-    if (type == MODEL){
+    if (!C_SCENE){
+        let new_scene = document.createElement('div');
+        new_scene.className = 'scene-div';
+        C_SCENE = `scene-${++N_SCENES}`;
+        new_scene.id = C_SCENE;
+        scenes.insertBefore(new_scene, add);
 
+    }
+
+    let scene_div = document.getElementById(C_SCENE);
+    if (type == MODEL){
+        let p_tag = document.createElement('p');
+        p_tag.textContent = `MODEL: ${id}`;
+        scene_div.appendChild(p_tag);
+
+    } else if (type == SUBTITLE){
+        let p_tag = document.createElement('p');
+        p_tag.textContent = `SUBTITLE: ${id}`;
+        scene_div.appendChild(p_tag);
+    } else {
+        let p_tag = document.createElement('p');
+        p_tag.textContent = `MOVE: ${id}`;
+        scene_div.appendChild(p_tag);
     }
 }
 
@@ -67,10 +83,34 @@ render_topbar();
 // event listeners
 
 complete.addEventListener('click', () => {
+    if (MODE == BASE_SCENE) {
+        capture_base_scene();
+    }
     MODE = (MODE == BASE_SCENE) ? ACTIONS : BASE_SCENE;
+    if (MODE == BASE_SCENE) {
+        C_SCENE = undefined;
+        clean_objects();
+    }
     render_topbar();
     console.log(output);
 });
+
+function fmove(){
+    // toolbar
+    let bs_html_string = `
+        <label for="object">object id:</label>
+        <input type="number" id="object" name="object" required>
+        <label for="from">from:</label>
+        <input type="text" id="from" name="from" required>
+        <button onclick='getpos(document.getElementById("object").value, "from")'>Set From</button>
+        <label for="to">to:</label>
+        <input type="text" id="to" name="to" required>
+        <button onclick='getpos(document.getElementById("object").value, "to")'>Set To</button>
+        <button onclick='sendmove(document.getElementById("object").value, document.getElementById("from").value, document.getElementById("to").value);'>DONE</button>
+        `;
+    toolbar.innerHTML = bs_html_string;
+
+}
 
 exp.addEventListener('click', () => {
     var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(output));

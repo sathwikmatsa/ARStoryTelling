@@ -95,6 +95,10 @@ function update_controller( event ) {
         control.showX = control.showY = control.showZ = true;
         console.log('controller updated! '+ obj.id);
 
+        if( MODE == ACTIONS ){
+            document.getElementById('add').textContent = `SELECTED: ${obj.id}`;
+        }
+
     }
 
 }
@@ -168,6 +172,9 @@ document.getElementById('file-input').addEventListener( 'change', function(evt) 
             output['models'].push( {'filename': filename, 'id': gltf.scene.id} );
             console.log('pushed', output);
 
+            // add to sidebar
+            add_to_sidebar(MODEL, gltf.scene.id);
+
         },
         // called while loading is progressing
         function ( xhr ) {
@@ -178,4 +185,62 @@ document.getElementById('file-input').addEventListener( 'change', function(evt) 
             console.log( 'An error happened'+ JSON.stringify(error) );
         }
     );
+   document.getElementById('file-input').value = '';
 }, false );
+
+////////////////////////////////////////////////////////////////
+
+
+function capture_base_scene(){
+    output.scenes.push({'base': [], 'actions': []});
+    for(let i = 0; i < objects.length; i++){
+        var translation = new THREE.Vector3();
+        var rotationQ = new THREE.Quaternion();
+        var scale = new THREE.Vector3();
+
+        objects[i].matrixWorld.decompose(translation, rotationQ, scale);
+        let conf = {};
+        conf['id'] = objects[i].id;
+        conf['translation'] = translation;
+        conf['rotationQ'] = rotationQ;
+        conf['scale'] = scale;
+
+        let l = output.scenes.length;
+        output.scenes[l-1]['base'].push( conf );
+    }
+}
+
+function add_subtitle( t ) {
+    let l = output.scenes.length;
+    output.scenes[l-1]['actions'].push( {'type': "subtitle", 'value': t} );
+    add_to_sidebar(SUBTITLE, t);
+}
+
+function getpos(obj_id, f_id){
+    document.getElementById(f_id).value = JSON.stringify(objects[object_ids.indexOf(parseInt(obj_id))].position);
+    console.log(obj_id);
+}
+
+function sendmove(id, from, to){
+    let f  = JSON.parse(from);
+    let t = JSON.parse(to);
+    let obj_id = parseInt(id);
+
+    let l = output.scenes.length;
+    output.scenes[l-1]['actions'].push( {'type': "move", 'id': obj_id, "from": f, "to": t} );
+    add_to_sidebar(MOVE, obj_id);
+    render_topbar();
+}
+
+function clean_objects(){
+    let l = objects.length;
+    for(let i = 0; i < l; i++){
+        scene.remove(objects[i]);
+        scene.remove(transformers[objects[i].id]);
+    }
+    objects = [];
+    object_ids = [];
+    transformers = {};
+
+    render();
+}
