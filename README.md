@@ -23,15 +23,16 @@ The story can be expressed as per the format specification in [ars_language_spec
 git clone https://github.com/sathwikmatsa/ARStorytelling.git
 cd ARStorytelling
 ```
-run [main.html](https://github.com/sathwikmatsa/ARStorytelling/blob/master/main.html) on localhost.
 
-point the camera feed to [kanji marker](https://user-images.githubusercontent.com/30603669/51952745-b34a6100-245f-11e9-8da1-f7962c1972a5.png) to visualize the story.
-
-run [ui.html](https://github.com/sathwikmatsa/ARStorytelling/blob/master/main.html) on a http server to build the application. **in progress**
+run [ui.html](https://github.com/sathwikmatsa/ARStorytelling/blob/master/main.html) on a http server, load models and add actions and finally click on *export* to generate story.json.
 
 ![load object](https://user-images.githubusercontent.com/30603669/54220530-a10c1a00-4517-11e9-9380-4780a89aaf39.png)
 
 ![position and scale](https://user-images.githubusercontent.com/30603669/54220577-baad6180-4517-11e9-9ab4-c71834ce55de.png)
+
+run [main.html](https://github.com/sathwikmatsa/ARStorytelling/blob/master/main.html) on localhost.
+
+point the camera feed to [kanji marker](https://user-images.githubusercontent.com/30603669/51952745-b34a6100-245f-11e9-8da1-f7962c1972a5.png) to visualize the story.
 
 ## Files / Directories
 + ```main.html``` - visualizer
@@ -42,6 +43,7 @@ run [ui.html](https://github.com/sathwikmatsa/ARStorytelling/blob/master/main.ht
 + ```css/``` - stylesheets
 + ```composer.json``` & ```index.php``` - heroku build (cloud deployment)
 + ```experimenting with AR.js``` - testing out AR.js
++ ```story.json``` - input story
 
 *obsolete for GUI*
 
@@ -52,10 +54,13 @@ run [ui.html](https://github.com/sathwikmatsa/ARStorytelling/blob/master/main.ht
 + ```ars.js``` - interpreter
 
 ## Roadmap
-- redesign user input method by replacing text program input with graphical user interface where user can:
+- ~~redesign user input method by replacing text program input with graphical user interface where user can~~:
   + ~~load objects into the playground~~
   + ~~visualize at different camera positions~~
   + ~~adjust position and scale of objects~~
-  + set subtitles and dialogs
-  + specify motions
-- rewrite the interpreter to evaluate input from GUI
+  + ~~set subtitles~~
+  + ~~specify motions~~
+- ~~rewrite the interpreter to evaluate input from GUI~~
+- ~~MVP~~
+- test, debug and refactor
+- deploy to heroku
