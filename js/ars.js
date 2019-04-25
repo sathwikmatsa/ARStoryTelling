@@ -42,7 +42,7 @@ async function play_animation(){
         let base = scene['base'];
         let nObj = base.length;
         for(let i = 0; i < nObj; i++){
-            document.getElementById("screen").appendChild(createElementFromHTML(`<a-entity gltf-model="${'#'+base[i].id}" id="${'e'+base[i].id}"></a-entity>`));
+            document.getElementById("screen").appendChild(createElementFromHTML(`<a-entity gltf-model="${'#m'+base[i].id}" id="${'e'+base[i].id}"></a-entity>`));
             configure_object('e'+base[i].id, base[i]['translation'], base[i]['rotationQ'], base[i]['scale'])
         }
 
@@ -52,14 +52,14 @@ async function play_animation(){
         for(let j = 0; j < nActions; j++){
             console.log("play"+j);
             if("subtitle" == actions[j]['type']){
-                document.getElementById("screen").appendChild(createElementFromHTML('<a-entity id="temp" text="value: '+actions[j]["value"]+';" align="center" baseline="bottom" geometry="primitive: plane; width: 4; height: auto" position="0 0 2"></a-entity>'));
+                document.getElementById("screen").appendChild(createElementFromHTML('<a-entity id="temp" text="value: '+actions[j]["value"]+';" align="center" baseline="bottom" geometry="primitive: plane; width: 4; height: auto" position="0 1 7"></a-entity>'));
                 await sleep(3000);
                 document.getElementById("temp").outerHTML = "";
             } else if("move" == actions[j]['type']){
                 let obj = 'e'+actions[j]['id'];
                 let f = actions[j]['from'];
                 let t = actions[j]['to'];
-                document.getElementById('#'+obj).appendChild(createElementFromHTML(`
+                document.getElementById(obj).appendChild(createElementFromHTML(`
                 <a-animation
                     attribute="position"
                     dur="2000"
